@@ -1,3 +1,5 @@
+package part2_helloworldwithcommandline;
+
 import java.util.Arrays;
 
 /**

@@ -1,4 +1,6 @@
-public class ALLCAPSStandardOutMessageRenderer {
+package part3_helloworlddecoupled;
+
+public class StandardOutMessageRenderer {
 
     private MessageProvider messageProvider = null;
 
@@ -7,7 +9,7 @@ public class ALLCAPSStandardOutMessageRenderer {
      */
     public void render(){
         if (messageProvider != null) {
-            System.out.println(messageProvider.getMessage().toUpperCase());
+            System.out.println(messageProvider.getMessage());
         } else {
             throw new RuntimeException("You must set a property messenger of the class " + StandardOutMessageRenderer.class.getName());
         }

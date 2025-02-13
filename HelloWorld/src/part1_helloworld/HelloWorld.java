@@ -1,3 +1,5 @@
+package part1_helloworld;
+
 /**
  * Adding the classic Hello World program
  */

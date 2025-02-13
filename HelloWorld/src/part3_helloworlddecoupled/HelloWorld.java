@@ -1,3 +1,5 @@
+package part3_helloworlddecoupled;
+
 /**
  * In this example we decouple the message provider and the renderer
  */
@@ -11,7 +13,7 @@ public class HelloWorld {
     }
 
     /**
-     * Call render on StandardOutMessageRenderer without setting a MessageProvider
+     * Call render on part3_helloworlddecoupled.StandardOutMessageRenderer without setting a part3_helloworlddecoupled.MessageProvider
      */
     static void part1(){
         try{
@@ -24,7 +26,7 @@ public class HelloWorld {
     }
 
     /**
-     * Call render on StandardOutMessageRenderer with setting a MessageProvider
+     * Call render on part3_helloworlddecoupled.StandardOutMessageRenderer with setting a part3_helloworlddecoupled.MessageProvider
      */
     static void part2(){
 
@@ -37,7 +39,7 @@ public class HelloWorld {
     }
 
     /**
-     * Call render on StandardOutMessageRenderer with setting a MessageProvider
+     * Call render on part3_helloworlddecoupled.StandardOutMessageRenderer with setting a part3_helloworlddecoupled.MessageProvider
      */
     static void part3(){
 
