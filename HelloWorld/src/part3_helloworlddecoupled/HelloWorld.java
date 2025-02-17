@@ -1,5 +1,8 @@
 package part3_helloworlddecoupled;
 
+import part3_helloworlddecoupled.messagerenderers.ALLCAPSStandardOutMessageRenderer;
+import part3_helloworlddecoupled.messagerenderers.StandardOutMessageRenderer;
+
 /**
  * In this example we decouple the message provider and the renderer
  */
@@ -13,7 +16,7 @@ public class HelloWorld {
     }
 
     /**
-     * Call render on part3_helloworlddecoupled.StandardOutMessageRenderer without setting a part3_helloworlddecoupled.MessageProvider
+     * Call render on part3_helloworlddecoupled.messageproviders.StandardOutMessageRenderer without setting a part3_helloworlddecoupled.MessageProvider
      */
     static void part1(){
         try{
@@ -26,7 +29,7 @@ public class HelloWorld {
     }
 
     /**
-     * Call render on part3_helloworlddecoupled.StandardOutMessageRenderer with setting a part3_helloworlddecoupled.MessageProvider
+     * Call render on part3_helloworlddecoupled.messageproviders.StandardOutMessageRenderer with setting a part3_helloworlddecoupled.MessageProvider
      */
     static void part2(){
 
@@ -39,7 +42,7 @@ public class HelloWorld {
     }
 
     /**
-     * Call render on part3_helloworlddecoupled.StandardOutMessageRenderer with setting a part3_helloworlddecoupled.MessageProvider
+     * Call render on part3_helloworlddecoupled.messageproviders.StandardOutMessageRenderer with setting a part3_helloworlddecoupled.MessageProvider
      */
     static void part3(){
 

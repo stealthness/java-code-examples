@@ -1,4 +1,5 @@
-package part3_helloworlddecoupled;
+package part3_helloworlddecoupled.messagerenderers;
+import part3_helloworlddecoupled.MessageProvider;
 
 public class ALLCAPSStandardOutMessageRenderer {
 
