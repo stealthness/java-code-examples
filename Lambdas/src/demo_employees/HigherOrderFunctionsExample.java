@@ -51,7 +51,7 @@ public class HigherOrderFunctionsExample {
 
     /**
      * Print the names of employees
-     * @param employeeList
+     * @param employeeList, a list of employees
      */
     public static void printEmployeeNames(List<Employee> employeeList) {
         // This is the java.util.function.Function instance which is used to map
