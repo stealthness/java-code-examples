@@ -8,7 +8,6 @@ public class PrototypeShapeDemo {
     }
 
     private static void part2SimpleBuilder() {
-        SimpleShapeBuilder simpleShapeBuilder = new SimpleShapeBuilder();
         Shape circle = SimpleShapeBuilder.createShape("Circle");
         Shape circleClone = SimpleShapeBuilder.createShape(circle);
         Circle anotherCircle = (Circle) SimpleShapeBuilder.createShape(circleClone);
@@ -21,7 +20,7 @@ public class PrototypeShapeDemo {
         circle.setColor("red");
         circle.setRadius(15);
 
-        Circle anotherCircle = (Circle) circle.clone();
+        Circle anotherCircle = circle.clone();
         System.out.println(circle);
         System.out.println(anotherCircle);
         anotherCircle.setX(5);
