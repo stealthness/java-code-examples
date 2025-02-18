@@ -9,18 +9,24 @@ package singletons.threadsafe;
 public class ThreadSafeSingleton {
 
     private static ThreadSafeSingleton instance;
+    private final String name;
 
     // private constructor to prevent instantiation
-    private ThreadSafeSingleton() {
+    private ThreadSafeSingleton(String name) {
+        this.name = name;
     }
 
     // synchronized keyword is used to prevent two threads from calling getInstance()
-    public static synchronized ThreadSafeSingleton getInstance() {
+    public static synchronized ThreadSafeSingleton getInstance(String name) {
         if (instance == null) {
             {
-                instance = new ThreadSafeSingleton();
+                instance = new ThreadSafeSingleton(name);
             }
         }
         return instance;
+    }
+
+    public String getName() {
+        return name;
     }
 }
