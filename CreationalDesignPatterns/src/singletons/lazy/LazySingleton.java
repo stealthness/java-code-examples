@@ -9,6 +9,7 @@ public class LazySingleton {
     private static LazySingleton instance;
     private final String name;
 
+    // private constructor to prevent instantiation
     private LazySingleton(String name) {
         this.name = name;
     }
