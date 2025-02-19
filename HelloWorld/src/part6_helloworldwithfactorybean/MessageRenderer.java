@@ -1,4 +1,4 @@
-package part4_helloworldwithinteface;
+package part6_helloworldwithfactorybean;
 
 /**
  * MessageRenderer interface provide a method to render message

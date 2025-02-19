@@ -1,7 +1,8 @@
-package part4_helloworldwithinteface;
+package part6_helloworldwithfactorybean;
+
 public class StandardOutMessageRenderer implements MessageRenderer {
 
-    private MessageProvider messageProvider;
+    MessageProvider messageProvider;
 
     @Override
     public void render() {

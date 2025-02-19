@@ -1,9 +1,10 @@
 package part4_helloworldwithinteface;
 
+
 /**
  * MessageProvider interface provide a method to get message
  */
-interface MessageProvider {
+public interface MessageProvider {
 
     /**
      * Returns a message

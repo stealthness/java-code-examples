@@ -1,9 +1,9 @@
-package part5_helloworldwithfactory;
+package part6_helloworldwithfactorybean;
 
 /**
  * MessageProvider interface provide a method to get message
  */
-public interface MessageProvider {
+interface MessageProvider {
 
     /**
      * Returns a message

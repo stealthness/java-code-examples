@@ -3,11 +3,8 @@ package part5_helloworldwithfactory;
 public class HelloWorld {
 
     public static void main(String[] args) {
-
-        MessageSupportFactory factory = MessageSupportFactory.getInstance();
-        MessageRenderer mr = factory.getMessageRenderer();
-        MessageProvider mp = factory.getMessageProvider();
-
+        MessageRenderer mr = MessageSupportFactory.getInstance().getMessageRenderer();
+        MessageProvider mp = MessageSupportFactory.getInstance().getMessageProvider();
         mr.setMessageProvider(mp);
         mr.render();
     }
