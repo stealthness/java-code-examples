@@ -5,4 +5,6 @@ public interface AdvancePrinter {
     void add(String printJob);
 
     void print(String printJob);
+
+    void printNext();
 }

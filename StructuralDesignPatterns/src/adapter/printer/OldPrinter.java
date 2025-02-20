@@ -3,7 +3,7 @@ package adapter.printer;
 public class OldPrinter implements Printer {
 
     String printerName;
-    boolean isReady;
+    boolean isReady = true;
 
     public OldPrinter(String name) {
         printerName = name;

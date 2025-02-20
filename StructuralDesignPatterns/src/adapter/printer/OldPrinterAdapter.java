@@ -1,22 +1,28 @@
 package adapter.printer;
 
+import java.util.ArrayDeque;
+import java.util.Optional;
+import java.util.Queue;
+
 public class OldPrinterAdapter implements AdvancePrinter {
 
     private final Printer oldPrinter;
-    private final String[] q;
+    private final Queue<String> queueJobs;
+    private final int queueSize;
 
     public OldPrinterAdapter(Printer printer, int queueSize) {
         oldPrinter = printer;
-        q = new String[queueSize];
+        queueJobs = new ArrayDeque<>(queueSize);
+        this.queueSize = queueSize;
     }
 
     @Override
     public void add(String printJob) {
-        if (size() < q.length){
-            System.out.println("print job : in queue");
-        } else {
+        if (size() >= queueSize) {
             System.out.println("print job : queue full");
+            return;
         }
+        queueJobs.add(printJob);
 
         // logic to add printJob to the queue
     }
@@ -30,8 +36,17 @@ public class OldPrinterAdapter implements AdvancePrinter {
         }
     }
 
+    @Override
+    public void printNext() {
+        if (oldPrinter.isReady()) {
+            Optional.ofNullable(queueJobs.poll())
+                    .ifPresent(oldPrinter::print);
+        }
+
+
+    }
+
     private int size(){
-        // return the size of the queue (number of printJobs in the queue, not the array size)
-        return 0;
+        return queueJobs.size();
     }
 }

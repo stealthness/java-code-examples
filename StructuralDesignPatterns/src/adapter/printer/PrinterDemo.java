@@ -7,10 +7,10 @@ public class PrinterDemo {
 
     public static void main(String[] args) {
 
-        System.out.println("test1");
+        System.out.println("\n\ntest1");
         testPrint(modernPrinter);
 
-        System.out.println("test2");
+        System.out.println("\n\ntest2");
         testPrint(new OldPrinterAdapter(oldPrinter, 20));
 
     }
@@ -19,6 +19,9 @@ public class PrinterDemo {
         printer.print("Test Print");
         printer.add("Test Print");
         printer.add("Another Test Print");
+        printer.printNext();
+        printer.printNext();
+        printer.printNext();
         printer.print("More Test Print");
     }
 }
