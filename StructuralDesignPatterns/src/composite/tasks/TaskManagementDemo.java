@@ -1,5 +1,7 @@
 package composite.tasks;
 
+import java.util.GregorianCalendar;
+
 /**
  * The TaskManagementDemo class demonstrates the use of the composite pattern
  * This code was modified from https://www.geeksforgeeks.org/composite-design-pattern-in-java/
@@ -21,6 +23,10 @@ public class TaskManagementDemo {
         TaskList phase1Tasks = new TaskList("Phase 1 Tasks");
         phase1Tasks.addTask(new SimpleTask("Design"));
         phase1Tasks.addTask(new SimpleTask("Implementation"));
+
+        GregorianCalendar startDate = new GregorianCalendar(2021, 1, 1);
+        GregorianCalendar endDate = new GregorianCalendar(2021, 1, 15);
+        phase1Tasks.addTask(new ComplexTask("Testing", startDate, endDate));
 
         projectTasks.addTask(phase1Tasks);
 
