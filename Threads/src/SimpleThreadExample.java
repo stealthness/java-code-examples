@@ -5,9 +5,21 @@
 public class SimpleThreadExample {
 
     public static void main(String[] args) {
-        Thread myThread = new Thread(new MyThread());
-        myThread.start();
+        //createThread();
+        createTwoThreads();
 
+    }
+
+    private static void createTwoThreads() {
+        Thread myThread1 = new Thread(new MyThread("Thread 1"));
+        Thread myThread2 = new Thread(new MyThread("Thread 2"));
+        myThread1.start();
+        myThread2.start();
+    }
+
+    private static void createThread() {
+        Thread myThread = new Thread(new MyThread("Thread 2"));
+        myThread.start();
     }
 }
 
