@@ -1,10 +1,19 @@
 # Installing Java
 
-Java can be installed from iether OpenJDK or Oracle
+Java can be installed from iether an OpenJDK distribution or Oracle JDK distribution. 
+
+After installing Java you can verify from comman line (or terminal in Linux/macOS)
+
+```bash
+java --version
+javac -- version
+```
+
+The `java` is the command to run java programs and `javac` is the java compiler.
 
 ## HelloWorld Program
 
-Hello World is a tradition first program to write in any language. In pre-java25 a basic `HelloWorld` would look like this
+The "Hello World" is traditianlly the first program written when learning a new programming language. Before java25, a basic `HelloWorld` would look like this
  
 ```Java
 public class HelloWorldOldStyle {
@@ -15,13 +24,13 @@ public class HelloWorldOldStyle {
 }
 ```
 
-This would then saved as `HelloWorldOldStyle.java`. To run the program would first require us to compile the program in java bytecode. We do this by using following command from the src directory
+This would then saved as text file called `HelloWorldOldStyle.java`. The filename must match the class name. To run the program, the program file is required to be compiled into java bytecode. This acheived by following command:
 
 ```bash
 javac HelloWorldOldStyle.java
 ```
 
-we would then see something like:
+the output would be something like this:
 
 ```bash
 01/01/2026  00:00    <DIR>          .
@@ -30,15 +39,15 @@ we would then see something like:
 01/01/2026  00:01               196 HelloWorldOldStyle.java
 ```
 
-We can now run the compiled code using command:
+The `.java` file contains human readable source code.  The `.class` file contains bytecode that can be executed by the Java Virtual Machine (JVM).
+
+The compiled code can run using the command:
 
 ```bash
 java HelloWorldOldStyle
 ```
 
-Note we dont not type `HelloWorldOldStyle.class`. What we are telling the computer to do is to look for the Class `HelloWorldOldStyle`. The java program we look for this class in files maked .class. When finds the class it will then load it into JVM (Java virtual Machine) and run the program. 
-
-The JVM is program that will interperate the byte code to machine language for for your system. This how can run the same program for differernt machines. As each JVM will be wriiten for computers operating system. Thsi how java acheive the write once run any where philosphy.
+Note we dont not type `HelloWorldOldStyle.class`. The computer is to look for the class named `HelloWorldOldStyle`. Java searches the classpath for the corresponding compiled .class file, loads the class into the JVM, and starts the program.
 
 The program will output:
 ```bash
@@ -46,16 +55,18 @@ home/project/src> java HelloWorldOldStyle
 Hello World
 ```
 
-Since java25 we can now run `HelloWorldOldStyle` like a script without compiling using command
+Since java11 we can compile and run `HelloWorldOldStyle` directly using the command.
 
 ```bash
 home/project/src> java HelloWorldOldStyle.java
 Hello World
 ```
 
+This handles the compilation and execution process and is convenient for small programs or scripts.
+
 ## New Style HelloWorld
 
-Create file called `HelloWorldNewStyle.java` and type the code below:
+Java now supports  a simplified syntax for simple programs. Create file called `HelloWorldNewStyle.java` and type the code below:
 
 ```java
 void main(){
@@ -63,7 +74,7 @@ void main(){
 }
 ```
 
-We can also compile again `javac HelloWorldNewStyle.java` whish would create `HelloWorldNewStyle.class` and we run that by using `java HelloWorldNewStyle`. For simplicity lets use Java25+ to run as script and type:
+You could compile again `javac HelloWorldNewStyle.java` which would create `HelloWorldNewStyle.class` and then run the program by using `java HelloWorldNewStyle`. However, for simplicity lets run directly:
 
 ```bash
 java HelloWorldNewStyle.java
@@ -71,9 +82,9 @@ java HelloWorldNewStyle.java
 
 ## Separating Compiled code from source code
 
-There are different convention to setting up a project to seperate source code `.java` and copiled code `class`. Later you will see how IDEs and build structure make process more manageable. For moment want show at basic level what IDEs do under the hood.
+A common project convention is to keep Java source code separate from compiled output.
 
-We will keep what know as source code, human readable code in text format, sepearate from compiled byte code that is binary data (1 and 0s) that machine readable only. We will label folder called `src` for source code and a folder `out` for compiled code.
+We will label folder called `src` for source code and a folder `out` for compiled code. The prject structer should look like this:
 
 ```bash
 project\
@@ -81,18 +92,20 @@ project\
 └── out\
 ```
 
-from command line make sure you in project folder. Now to compile we use:
+From the project directory, you can compile the program using:
 
 ```bash
 javac -d out  src\HelloWorldNewStyle.java
 java -cp out HelloWorldNewStyle
 ```
 
-Where `-cp` meand add the folder to the classpath. The classpath will be list of location that jVM will search for to find the class to run. By default the level that java is run from, in this from folder `project` will also be included on classpath. That is why before we did not have add a location to the class path.
+The -d option tells the Java compiler where to place the compiled output. The -cp option means classpath. The classpath is a list of locations that the JVM searches when looking for classes and other resources needed by a program.
+
+As projects become larger, IDEs and build tools such as Maven and Gradle help manage source files, compiled code, dependencies, and project structure automatically.
 
 ## Notes on Old Style Hello World
 
-Since you may have to write code that is backward compitable, and becuase there is some usefull infor mation about the old Style structre
+Consider the following program:
 
 
 ```code
@@ -104,27 +117,75 @@ Since you may have to write code that is backward compitable, and becuase there 
 6	}
 ```
 
-All java file must have one public class, it name must match the filename.
+All java files can contain several classes but can have at most one public class, it name must match the filename. 
 
-public static Void main is special static method which is the main entry point for java program to run. The array of string will be formed from any words added after command line.
+The `public static void main(String[] args)` is the traditional entry point for a Java application. The `args` parameter contains command-line arguments supplied when starting the program.
 
 ```bash
 java HelloWorldOldStyle Bob 1 two
 ```
 
-then value of the args will be an array of String with value {"Bob", "1", "two"}, noting that "1" is the string with 1 character and not value of the int 1.
+The `args` array would be `{"Bob", "1", "two"}`. All command-line arguments are initially provided as strings. Therefore "1" is a string containg the character 1, not the integer value.
 
-`System.out` is an PrintStream Class that will handle console output. It has a method `println` that is used to print to console.
+`System.out` represents the standard output stream. The `println()` method prints text to the console and then moves to a new line.
 
-From java25 IO.println is improve Class at this stage does the same. 
+Newer Java versions also provide simpler APIs for console output, such as `IO.println("Hello World");`.
 
-## Changes of Java coding Stye over 25 years
+## What Does the JVM Do?
 
-becuase jav has been around and evovled over 25 years it is common to see example of code that where oftern wriiten for different version. Here short history of version that change java signifcantly
+Java source code is compiled into Java bytecode. The bytecode is then executed by the Java Virtual Machine (JVM). A simplified process looks like this:
 
-+ Before Java5, you will see very litttle of code example, code style by modern standards was antiquated.
-+ Java 5 and generic, one first major steps in changing how code was written. provide compile time type safty removing the need for typecasting.
-+ java 8 saw lambda expression, enable functional style programmin
-+ Before java 9 versioning would be measured in years, since java9 versioning was around 6months cycle, with 11,17,21,25 being LTS (long term support) versions 
-+ Across the next several versions would see improvement with Pattern Matching, records, Sealed class, Switch Expression, Virtual Threads. Much of the improvment would help remove common boiler plate that java in early years was known for.
-+ It is now common to see feature added as preview.
+```
+Java Source Code
+      ↓
+   javac
+      ↓
+Java Bytecode (.class)
+      ↓
+     JVM
+      ↓
+Machine Instructions
+```
+
+The JVM provides an abstraction layer between Java programs and the underlying operating system and hardware. Modern JVMs use a combination of interpretation and Just-In-Time (JIT) compilation to execute Java bytecode efficiently.
+
+Because different platforms provide JVM implementations for their operating systems and hardware, the same Java bytecode can often run on different systems without changing the Java source code. This is the idea behind Java's famous philosophy: _*Write once, run anywhere.*_
+
+## Changes in Java Coding Style Over 25 Years
+
+Java has been around for many years and has changed significantly. Because of this, you may encounter code written in different styles depending on when it was created.
+
+Here are some important milestones.
+
++ Before Java 5 – Java code often used more verbose patterns that would now be considered outdated.
++ Java 5 – Introduced major language improvements such as generics, annotations, enums, and enhanced for loops. Generics improved type safety and reduced the need for explicit type casting.
++ Java 8 – Introduced lambda expressions and the Stream API, making functional-style programming more common in Java.
++ Java 9 – Introduced the Java Platform Module System and began the modern six-month release cycle.
++ Java 11, 17, 21, and 25 – Long-Term Support (LTS) releases that are commonly used in production environments.
++ Recent Java releases – Introduced features such as records, sealed classes, pattern matching, switch expressions, and virtual threads.
+
+Many of these changes reduce repetitive boilerplate code and make Java programs easier to read and maintain.
+
+### Preview Features
+
+Java continues to evolve, and some new language features are introduced as preview features. Preview features allow developers to experiment with new functionality before it becomes a permanent part of the Java language. Because preview features can change between releases (a few times been removed), they should be used carefully, especially in production applications.
+
+## Summary
+
+Java development generally follows this process:
+
+Write Java Source Code
+        ↓
+Compile with javac
+        ↓
+Create Java Bytecode
+        ↓
+Run with java
+        ↓
+Execute on the JVM
+
+For simple programs, modern Java also allows you to run a source file directly:
+
+java HelloWorld.java
+
+As you continue learning Java, you will see how IDEs, build tools, packages, modules, and project structures automate much of this process.
