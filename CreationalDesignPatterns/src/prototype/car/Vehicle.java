@@ -2,6 +2,11 @@ package prototype.car;
 
 import java.util.Objects;
 
+
+/**
+ * This is an abstract class of vehicle, provides abstract method clone, this will allow us to create new class objects
+ * This is part of the Prototyping pattern
+ */
 public abstract class Vehicle implements Cloneable{
 
     private final String type;

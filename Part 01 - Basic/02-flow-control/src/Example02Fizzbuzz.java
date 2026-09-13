@@ -28,7 +28,7 @@ void main(String[] args){
 		IO.println(value);
 	}		
 	
-	// Alternative Nested if soultion. In general we would prefer not use nested if when possible
+	// Alternative Nested if solution. In general, we would prefer not use nested if when possible
 	
 	if (value % 5 == 0){
 		if (value % 3 == 0){
