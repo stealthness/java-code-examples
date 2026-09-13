@@ -158,7 +158,89 @@ At the moment we are not validating the user input. If a user enter `Bob` we wou
 
 ## Example 2 : FizzBuzz
 
-// to do...
+_*Problem*_
 
+FizzBuzz is children game where as number are counted up from one, if number is divisible bt three, they call out "Fizz",
+if a number is divisible by five they call out "Buzz", if a number divisible by both three and five then they call out
+"FizzBuzz". 
+Write a program that will respond "Fizz", "Buzz", "FizzBuzz", or they number they were given. It can be assumed that a 
+user will enter a valid integer. 
 
+Save the solution to `Example02FizzBuzz.java`
 
+```java
+void main(String[] args){
+    // Checks if args has at least one value
+    if (args.length > 0){
+        value = Integer.parseInt(args[0]);
+    } else {
+        String input = IO.readln("Enter a number");
+        // We shall assume that a user will enter a valid number
+        value = Integer.parseInt(input);
+    }
+  
+    if (value % 5 == 0 && value % 3 == 0){
+        IO.println("FIZZBUZZ");
+    } else if (value % 3 == 0 ){
+        IO.println("FIZZ");
+    } else if (value % 5 == 0 ){
+        IO.println("BUZZ");
+    } else {
+        IO.println(value);
+    }
+}
+```
+
+There is more than one possible solution in solving the problem look at code below. It is equivalent to the above code
+, but in code below has nested `if else` statement, which makes reading the code harder. Where possible, we should try 
+to avoid nested `if else` statements.
+
+```java 
+	if (value % 5 == 0){
+		if (value % 3 == 0){
+			IO.println("FIZBUZZ");
+		} else {
+			IO.println("BUZZ");
+		}
+	} else {
+		if (value % 3 == 0){
+			IO.println("FIZZ");
+		} else{
+			IO.println(value);
+		}
+	}
+```
+
+This is modern version of java usage, in older tradition code would use a `Scanner` class. It is located in the `java.util`
+package, and we use `import java.util` so as not to write `java.util.Scanner` which is its full class name.
+
+```java
+import java.util;
+
+public class Example02FizzBuzz {
+
+    public static void main(String[] args) {
+        // Alternative Old style code
+        Scanner scanner = new Scanner(System.in);
+
+        // Check that args has at least one value
+        if (args.length > 0) {
+            value = Integer.parseInt(args[0]);
+        } else {
+            // we use nextLine rather than nextInt due to common console bug that add extra return character and will cuase the parseInt to fail.
+            System.out.println("Enter an integer number");
+            String input = scanner.nextLine();
+            // We shall assume that a user will enter a valid number
+            value = Integer.parseInt(input);
+        }
+        
+        // the rest of the code ...
+    }
+}
+```
+
+## Example 03 Leap Year
+
+_*problem*_
+
+Write a program that will get a year, either from command-line or user input
