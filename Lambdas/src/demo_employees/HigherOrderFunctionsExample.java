@@ -19,11 +19,11 @@ record Employee(String name, int age) {
      */
     public static List<Employee> load() {
         return List.of(
-                new Employee("Tom Jones", 45),
-                new Employee("Harry Major", 25),
-                new Employee("Ethan Hardy", 65),
-                new Employee("Nancy Smith", 15),
-                new Employee("Deborah Sprightly", 29));
+                new Employee("Tom Jones", 86),
+                new Employee("Charlot Church", 40),
+                new Employee("Bonnie Taylor", 87),
+                new Employee("Shirley Basset", 89),
+                new Employee("Mary Hopkins", 78));
     }
 }
 
@@ -35,7 +35,7 @@ record Employee(String name, int age) {
 
 public class HigherOrderFunctionsExample {
 
-    public static void main(String... args) {
+    static void main(String... args) {
         List<Employee> employeeList = Employee.load();
 
         System.out.println("Employees");
@@ -61,11 +61,15 @@ public class HigherOrderFunctionsExample {
         Function<Employee, String> funcEmpToString = (Employee e) -> {
             return e.name();
         };
+        // A more concise version of the lambda expression above is shown below.
+        // Function<Employee, String> funcEmpToString = Employee::name;
 
         // The list of employees is passed to method convertEmpListToNamesList() along with the Function object funcEmpToString;
         List<String> empNameList = convertEmpListToNamesList(employeeList, funcEmpToString);
 
         empNameList.forEach(s -> System.out.println(s));
+        // or we could a lambda expression to print the names of employees in the list
+        // empNameList.forEach(System.out::println);
     }
 
     public static void printEmployeeFirstNames(List<Employee> employeeList) {
