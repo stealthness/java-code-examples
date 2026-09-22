@@ -36,11 +36,13 @@ class FibonacciIterativeTest {
         assertEquals(55, FibonacciIterative.fibonacci(10));
     }
 
+    @Test
     @Timeout(1)
     void testFibonnci10InTime() {
         FibonacciIterative.fibonacci(10);
     }
 
+    @Test
     @Timeout(1)
     void testFibonnci48InTime() {
         FibonacciIterative.fibonacci(48);
